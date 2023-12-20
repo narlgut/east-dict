@@ -37,6 +37,8 @@ const Keyboard = () => {
         const currChars = Array();
 
         for (let i = 0; i < words.length; ++i) {
+            console.log(words[i]);
+
             await axios.get(`https://east-dict-api.onrender.com/get/${words[i].substring(0, words[i].length - 1)}`)
             .then((res) => {
                 currChars.push(res.data.find((element) => element.etyNum == words[i][words[i].length - 1]).char);
@@ -53,7 +55,6 @@ const Keyboard = () => {
         }
 
         setChars(currChars);
-        console.log(currChars);
     }
 
     return (
