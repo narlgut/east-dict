@@ -40,7 +40,7 @@ const Keyboard = () => {
             console.log(i);
             await axios.get(`https://east-dict-api.onrender.com/get/${words[i].substring(0, words[i].length - 1)}`)
             .then((res) => {
-                currChars.push(res.data.find((element) => element.etyNum == words[i][words[i].length - 1]).char);
+                currChars.push(res.data.find((element) => element.etyNum == parseInt(words[i][words[i].length - 1])).char);
             })
             .catch((err) => {
                 console.log(err);
