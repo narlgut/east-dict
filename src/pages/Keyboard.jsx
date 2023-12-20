@@ -37,7 +37,7 @@ const Keyboard = () => {
         const currChars = Array();
 
         for (let i = 0; i < words.length; ++i) {
-            console.log(words[i]);
+            console.log(words[i].substring(0, words[i].length - 1));
 
             await axios.get(`https://east-dict-api.onrender.com/get/${words[i].substring(0, words[i].length - 1)}`)
             .then((res) => {
