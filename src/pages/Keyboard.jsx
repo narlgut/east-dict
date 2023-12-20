@@ -37,14 +37,11 @@ const Keyboard = () => {
         const currChars = Array();
 
         for (let i = 0; i < words.length; ++i) {
-            console.log(i);
             await axios.get(`https://east-dict-api.onrender.com/get/${words[i].substring(0, words[i].length - 1)}`)
             .then((res) => {
-                console.log(res.data);
                 currChars.push(res.data.find((element) => element.etyNum == words[i][words[i].length - 1]).char);
             })
             .catch((err) => {
-                console.log(err);
                 if (words[i][0] == 'j') {
                     currChars.push("〻");
                 } else if (words[i][0] == '.') {
@@ -53,7 +50,6 @@ const Keyboard = () => {
                     currChars.push("、");
                 }
             });
-            console.log(i);
         }
 
         setChars(currChars);
