@@ -78,7 +78,9 @@ const Keyboard = () => {
 
             <br />
 
-            <button onClick={(e) => ConvertToChars(e)}>Convert</button>
+            <div className="border-2 border-black p-0.5">
+                <button onClick={(e) => ConvertToChars(e)}>Convert</button>
+            </div>
 
             <br />
 

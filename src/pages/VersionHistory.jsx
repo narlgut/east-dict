@@ -3,6 +3,16 @@ import VersionHistoryEntry from "../components/VersionHistoryEntry";
 const VersionHistory = () => {
     return (
         <div className="mt-4 ml-auto mr-auto w-5/6">
+            <VersionHistory
+                versionNum="1.2"
+                versionName="Keyboard Update"
+                versionUpdates={[
+                    "Added the keyboard which allows you to type Hán-Nôm (kinda)",
+                    "Rearranged information",
+                    "Slight code rework"
+                ]}
+            />
+
             <VersionHistoryEntry
                 versionNum="1.1"
                 versionName="Accessibility Update"

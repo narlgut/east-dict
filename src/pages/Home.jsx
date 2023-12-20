@@ -27,7 +27,8 @@ const Home = () => {
 
             <p className="text-center">
                 Just something I built to showcase my hobby in looking at the lesser-known aspects of Asian history and culture. Not meant
-                to be practical.
+                to be practical. Do be aware of the fact that since I'm using a free server, it'll take time for my backend to boot up
+                inactivity, so if characters don't show up in the dictionary or keyboard, wait some time.
             </p>
         </div>
     )
