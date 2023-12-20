@@ -43,6 +43,7 @@ const Keyboard = () => {
                 currChars.push(res.data.find((element) => element.etyNum == words[i][words[i].length - 1]).char);
             })
             .catch((err) => {
+                console.log("error");
                 if (words[i][0] == 'j') {
                     currChars.push("〻");
                 } else if (words[i][0] == '.') {
