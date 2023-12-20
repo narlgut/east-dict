@@ -3,7 +3,7 @@ import VersionHistoryEntry from "../components/VersionHistoryEntry";
 const VersionHistory = () => {
     return (
         <div className="mt-4 ml-auto mr-auto w-5/6">
-            <VersionHistory
+            <VersionHistoryEntry
                 versionNum="1.2"
                 versionName="Keyboard Update"
                 versionUpdates={[
@@ -12,6 +12,8 @@ const VersionHistory = () => {
                     "Slight code rework"
                 ]}
             />
+
+            <br />
 
             <VersionHistoryEntry
                 versionNum="1.1"
