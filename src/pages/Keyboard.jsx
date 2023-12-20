@@ -30,7 +30,6 @@ const Keyboard = () => {
         }
 
         setCurrWord(input.substring(start, end + 1));
-        console.log(currWord);
     }
 
     const ConvertToChars = async () => {
@@ -54,6 +53,7 @@ const Keyboard = () => {
         }
 
         setChars(currChars);
+        console.log(currChars);
     }
 
     return (
