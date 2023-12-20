@@ -5,7 +5,7 @@ const CharBar = (props) => {
     const [infos, setInfos] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/get/${props.word}`)
+        axios.get(`https://east-dict-api.onrender.com/get/${props.word}`)
         .then(async (res) => {
             res.data.sort((a, b) => a.etyNum - b.etyNum);
             setInfos(res.data);
