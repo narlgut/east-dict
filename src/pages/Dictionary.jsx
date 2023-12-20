@@ -1,55 +1,49 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import WordInfo from "../components/WordInfo";
+import WordSearch from "../components/WordSearch";
+import CharInfo from "../components/CharInfo";
+import Tooltip from "../components/Tooltip";
 
 const SearchWords = () => {
-    const [dataFromReq, setDataFromReq] = useState([]);
-    const [useImgs, setUseImgs] = useState(false);
+    const [data, setData] = useState([]);
     const [inp, setInp] = useState("");
+    const [showCharInfo, setShowCharInfo] = useState(false)
 
-    const handleSearchWords = (val) => {
-        if (!/\S/.test(val)) return;
+    useEffect(() => {
+        if (!/\S/.test(inp)) return;
 
-        axios.get(`https://east-dict-api.onrender.com/get/${val}`)
+        axios.get(`https://east-dict-api.onrender.com/get/${inp}`)
         .then((res) => {
-            setDataFromReq(res.data);
+            res.data.sort((a, b) => a.etyNum - b.etyNum);
+            setData(res.data);
         })
-        .catch((err) => {
-            console.log(err);
-        });
-    }
+    }, [inp])
 
     return (
         <div className="flex-grow flex flex-col justify-start items-center">
             <h4>Enter character or name of word</h4>
-            <div>
-                <input
-                    className="border-b-2 text-center border-black mb-4 mr-1"
-                    type="text"
-                    value={inp}
-                    onChange={(e) => {
-                        setInp(e.target.value);
-                        handleSearchWords(e.target.value);
-                    }}
+            <span>
+                <WordSearch
+                    input={inp}
+                    setInput={setInp}
                 />
-                <label>
-                    <input
-                        className="mr-1"
-                        type="checkbox"
-                        checked={useImgs}
-                        onChange={() => setUseImgs(!useImgs)}
+                <button onClick={() => setShowCharInfo(true)}>
+                    <Tooltip
+                        tipChar="?"
+                        tooltip="Why were these specific characters chosen?"
                     />
-                    Use images (slower load, no font issues)
-                </label>
-            </div>
+                </button>
+            </span>
+
+            {showCharInfo && (<CharInfo setShowCharInfo={setShowCharInfo} />)}
 
             {
-                dataFromReq.map((word, index) => (
+                data.map((word, index) => (
                     <WordInfo 
                         key={index}
                         char={word.char}
-                        useImgs={useImgs}
                         name={word.name}
                         type={word.type}
                         senses={word.senses}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const WordTooltip = (props) => {
+const Tooltip = (props) => {
     const [visible, setVisible] = useState(false);
     const [tooltipPos, setTooltipPos] = useState({top: 0, left: 0})
 
@@ -11,15 +11,15 @@ const WordTooltip = (props) => {
             onMouseLeave={() => setVisible(false)}
             onMouseMove={(e) => setTooltipPos({top: e.clientY, left: e.clientX + 20})}
         >
-            (+)
+            ({props.tipChar})
             {
                 visible && (
                 <div className="p-1 fixed bg-white border-2 border-black max-w-xl" style={tooltipPos}>
-                    {props.exInfo}
+                    {props.tooltip}
                 </div>)
             }
         </div>
     )
 }
 
-export default WordTooltip;
+export default Tooltip;
