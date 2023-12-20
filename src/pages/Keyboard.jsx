@@ -37,6 +37,7 @@ const Keyboard = () => {
         const currChars = Array();
 
         for (let i = 0; i < words.length; ++i) {
+            console.log(i);
             await axios.get(`https://east-dict-api.onrender.com/get/${words[i].substring(0, words[i].length - 1)}`)
             .then((res) => {
                 console.log("then");
@@ -51,7 +52,8 @@ const Keyboard = () => {
                 } else if (words[i][0] == ',') {
                     currChars.push("、");
                 }
-            })
+            });
+            console.log(i);
         }
 
         setChars(currChars);
