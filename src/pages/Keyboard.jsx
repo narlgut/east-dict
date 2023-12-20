@@ -37,12 +37,12 @@ const Keyboard = () => {
         const currChars = Array();
 
         for (let i = 0; i < words.length; ++i) {
-            await axios.get(`https://east-dict-api.onrender.com/get/${"tôi"}`)
+            await axios.get(`https://east-dict-api.onrender.com/get/tôi`)
             .then((res) => {
+                console.log(words[i]);
                 currChars.push(res.data.find((element) => element.etyNum == words[i][words[i].length - 1]).char);
             })
             .catch((err) => {
-                console.log(words[i]);
                 if (words[i][0] == 'j') {
                     currChars.push("〻");
                 } else if (words[i][0] == '.') {
